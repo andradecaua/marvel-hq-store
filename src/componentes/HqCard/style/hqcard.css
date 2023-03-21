@@ -1,0 +1,26 @@
+@keyframes hqCardBorderAnimation {
+    0% {
+        border-color: #EAD100;
+    }
+    50%{
+        border-color: white;
+    }
+    100% {
+        border-color: #EAD100;
+    }
+}
+
+.hqcard{
+}
+
+.hqimage{
+    width: 200px;
+    height: 250px;
+    object-fit: fill;
+    filter: drop-shadow(2px 2px 5px black);
+    transition: transform 0.2s 1ms ease-in-out;
+}
+
+.hqimage:hover{
+    transform: scale(1.1)
+}

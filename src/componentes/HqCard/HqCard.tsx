@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import "./style/hqcard.css"
 
 type typeHq = {
         title: string,
@@ -11,19 +12,15 @@ type typeHq = {
 function HqCard(props: typeHq){
     const sourceThumbnail = `${props.thumbnail.path}.${props.thumbnail.extension}`
     return(
-    <SectionStyled>
-        <ImgCard src={sourceThumbnail} />
+    <SectionStyled className="hqcard">
+        <img className='hqimage' src={sourceThumbnail} alt=""/>
     </SectionStyled>
     )
 }
 
-const ImgCard = styled.img`
-    border: 4px outset black;
-    width: 180px
-`
-
 const SectionStyled = styled.section`
     width: 200px;
+    height: 250px;
     justify-self: center;
 `
 
