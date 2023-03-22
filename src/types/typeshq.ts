@@ -1,17 +1,6 @@
 export type typeHqs = {
     data: {
-      results: [{
-        id: number
-        title: string,
-        thumbnail: {
-          path: string,
-          extension: string
-        },
-        prices: [{
-          type: string,
-          price: number
-        }]
-      }]
+      results: [typeHq]
     }
   }
 
@@ -26,6 +15,7 @@ export type typeHq = {
     prices: [{
         type: string,
         price: number
-      }]
+      }],
+    description: string
 }
 

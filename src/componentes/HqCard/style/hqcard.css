@@ -8,7 +8,7 @@
     align-self: center;
 }
 
-.hqcard:hover .hqimage{
+.hqimage:hover{
     transform: scale(1.2);
 }
 

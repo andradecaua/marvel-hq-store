@@ -26,7 +26,7 @@ function App() {
       <MainStyled>
         {hqs === undefined?'':hqs.data.results.map(
           (hq, indexHQ) => {
-            return <HqCard id={hq.id} title={hq.title} thumbnail={hq.thumbnail} prices={hq.prices} key={indexHQ} />
+            return <HqCard description={hq.description} id={hq.id} title={hq.title} thumbnail={hq.thumbnail} prices={hq.prices} key={indexHQ} />
           }
           )
         }

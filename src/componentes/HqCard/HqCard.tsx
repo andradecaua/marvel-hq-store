@@ -40,9 +40,13 @@ const SectionStyled = styled.section`
     display: grid;
     grid-template-rows: 70% 10% 20%;
     border: 1px solid #5a5a5a;
-    background-color: #f9f6f6;
+    background-color: rgb(250 250 250);
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
+    border-bottom-width: 8px;
+    border-bottom-color: #e62429;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
 `
 const SpanTitle = styled.span`
     overflow: hidden;
