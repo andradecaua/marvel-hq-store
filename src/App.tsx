@@ -1,27 +1,12 @@
 import React, {useEffect, useRef, useState} from 'react';
 import styled from 'styled-components';
-import Header from './componentes/Header';
+import Header from './componentes/Header/Header';
 import HqCard from './componentes/HqCard/HqCard';
 import { filterHqsWithNoImageAvaliable } from './services/filterHqsWithNoImageAvaliable';
 import { getHqs } from './services/getHqs';
+import { typeHqs } from './types/typeshq';
 
 function App() {
-
-  type typeHqs = {
-    data: {
-      results: [{
-        title: string,
-        thumbnail: {
-          path: string,
-          extension: string
-        },
-        prices: [{
-          type: string,
-          price: number
-        }]
-      }]
-    }
-  }
 
   var hqsValue = useRef<typeHqs>()
   const [hqs, setHqs] = useState<typeHqs>()
@@ -36,12 +21,12 @@ function App() {
   },[])
 
   return (
-    <div className="App">
+    <div className="App" style={{display: 'grid'}}>
       <Header />
       <MainStyled>
         {hqs === undefined?'':hqs.data.results.map(
           (hq, indexHQ) => {
-            return <HqCard title={hq.title} thumbnail={hq.thumbnail} prices={hq.prices} key={indexHQ} />
+            return <HqCard id={hq.id} title={hq.title} thumbnail={hq.thumbnail} prices={hq.prices} key={indexHQ} />
           }
           )
         }
@@ -53,9 +38,12 @@ function App() {
 const MainStyled = styled.main`
     display: grid;
     grid-auto-rows: 250px;
-    grid-template-columns: 50% 50%;
+    grid-template-columns: 48% 48%;
     row-gap: 20px;
+    column-gap: 4%;
     padding-top: 5px;
+    width: 100vw;
+    justify-self: center;
 `
 
 export default App;

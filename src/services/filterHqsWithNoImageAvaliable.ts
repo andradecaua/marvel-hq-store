@@ -1,18 +1,4 @@
-type typeHqs = {
-  data: {
-    results: [{
-      title: string,
-      thumbnail: {
-        path: string,
-        extension: string
-      },
-      prices: [{
-        type: string,
-        price: number
-      }]
-    }]
-  }
-}
+import { typeHqs } from "../types/typeshq"
 
 function filterHqsWithNoImageAvaliable(hqs: typeHqs){
 
