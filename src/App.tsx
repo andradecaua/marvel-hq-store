@@ -14,7 +14,11 @@ function App() {
         thumbnail: {
           path: string,
           extension: string
-        }
+        },
+        prices: [{
+          type: string,
+          price: number
+        }]
       }]
     }
   }
@@ -37,7 +41,7 @@ function App() {
       <MainStyled>
         {hqs === undefined?'':hqs.data.results.map(
           (hq, indexHQ) => {
-            return <HqCard title={hq.title} thumbnail={hq.thumbnail} />
+            return <HqCard title={hq.title} thumbnail={hq.thumbnail} prices={hq.prices} key={indexHQ} />
           }
           )
         }
@@ -49,8 +53,9 @@ function App() {
 const MainStyled = styled.main`
     display: grid;
     grid-auto-rows: 250px;
-    grid-template-columns: 100%;
-    row-gap: 10px;
+    grid-template-columns: 50% 50%;
+    row-gap: 20px;
+    padding-top: 5px;
 `
 
 export default App;

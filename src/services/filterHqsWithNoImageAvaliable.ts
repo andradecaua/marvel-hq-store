@@ -1,14 +1,18 @@
 type typeHqs = {
-    data: {
-      results: [{
-        title: string,
-        thumbnail: {
-          path: string,
-          extension: string
-        }
+  data: {
+    results: [{
+      title: string,
+      thumbnail: {
+        path: string,
+        extension: string
+      },
+      prices: [{
+        type: string,
+        price: number
       }]
-    }
+    }]
   }
+}
 
 function filterHqsWithNoImageAvaliable(hqs: typeHqs){
 
