@@ -12,6 +12,6 @@
     transform: scale(1.2);
 }
 
-.hqcard:hover .hqtitle{
+.hqtitle:hover{
     color: rgb(230, 36, 41)
 }

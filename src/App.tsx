@@ -34,8 +34,6 @@ function App() {
 
       <div>
         <SelectLimitForPage defaultValue={limitHqForPage} onChange={(event) => setLimitHqForPage(Number.parseInt(event.currentTarget.value))}>
-          <option value={2}>2</option>
-          <option value={4}>4</option>
           <option value={6}>6</option>
           <option value={8}>8</option>
           <option value={10}>10</option>
@@ -54,10 +52,12 @@ function App() {
       <div style={{display: 'flex', justifyContent: 'space-around', fontSize: 20, width: "90vw", justifySelf:"center"}}>
         {
         arrayForPagination.current?.map((_, index) => {
+          let background = active == index+1?"rgba(255, 0, 0, 0.7)":""
+          let color = active === index+1?"white":"black"
           return(
-            <span style={{color: active === index+1?"red":"black"}} key={index} onClick={(event) => {
+            <SpanPagination style={{color: color,backgroundColor: background}} key={index} onClick={(event) => {
               setActivePage(index+1)
-            }}>{index+1}</span>
+            }}>{index+1}</SpanPagination>
           )
         })
         }
@@ -65,6 +65,16 @@ function App() {
     </div>
   );
 }
+
+const SpanPagination = styled.span`
+    width: 50px;
+    height: 50px;
+    display: flex;
+    border-radius: 50%;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s 1ms ease-in-out, color 0.2s 1ms ease-in-out;
+`
 
 const MainStyled = styled.main`
     display: grid;

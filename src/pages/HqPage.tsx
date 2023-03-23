@@ -93,6 +93,7 @@ const SpanTitle = styled.span`
     font-weight: bold;
     font-size: 1.5rem;
     transition: color 0.2s 1ms ease-in-out;
+    cursor: pointer;
 `
 
 const SpanPrice = styled.span`

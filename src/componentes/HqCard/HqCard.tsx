@@ -3,18 +3,31 @@ import addItemToBagIcon from '../../assets/add_item_to_bag.png'
 import { typeHq } from '../../types/typeshq'
 import "./style/hqcard.css"
 import {useNavigate} from 'react-router-dom'
+import { store } from '../../store/store'
+import { incrementItemToCart } from '../../reducer/cartReducer'
+import { useDispatch } from 'react-redux'
 
 function HqCard(props: typeHq){
     const sourceThumbnail = `${props.thumbnail.path}.${props.thumbnail.extension}`
     const priceHQ = props.prices[0].price
     const navigate = useNavigate()
+    const dispatch = useDispatch()
+    const hq = {
+        id: props.id,
+        title: props.title,
+        description: props.description,
+        prices: props.prices,
+        thumbnail: props.thumbnail
+    }
     return(
     <SectionStyled className="hqcard">
         <img className='hqimage' src={sourceThumbnail} alt=""/>
         <SpanTitle className='hqtitle' onClick={() => navigate(`/hq/${props.id}`)}>{props.title}</SpanTitle>
         <div style={{display: 'flex', flexDirection: 'row', justifyContent: "space-evenly", alignItems: "center"}}>
             <span style={{fontWeight: 'bold'}}>R${priceHQ}</span>
-            <ShoppingBagButton><img src={addItemToBagIcon} alt="Add item to bag icon" height={35}/></ShoppingBagButton>
+            <ShoppingBagButton onClick={() => {
+                
+            }}><img src={addItemToBagIcon} alt="Add item to bag icon" height={35}/></ShoppingBagButton>
         </div>
     </SectionStyled>
     )
@@ -29,6 +42,10 @@ const ShoppingBagButton = styled.button`
     height: 40px;
     background-color: transparent;
     border: none;
+
+    :hover{
+        transform: scale(1.1)
+    }
 `
 
 const SectionStyled = styled.section`
@@ -39,7 +56,7 @@ const SectionStyled = styled.section`
     text-align: center;
     display: grid;
     grid-template-rows: 70% 10% 20%;
-    border: 1px solid #5a5a5a;
+    border: 1px solid #e62429;
     background-color: rgb(250 250 250);
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;

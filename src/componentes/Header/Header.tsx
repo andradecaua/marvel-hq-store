@@ -1,4 +1,7 @@
+import { Link } from "react-router-dom"
 import styled from "styled-components"
+import shoppingbag from '../../assets/add_item_to_bag_white.png'
+
 
 function Header(){
     return(
@@ -6,6 +9,9 @@ function Header(){
             <TitleStyled>
                 Marvel HQ'Store
             </TitleStyled>
+            <nav>
+                <Link to="/cart"><img src={shoppingbag} alt="Bag de compras" height={40} /></Link>
+            </nav>
         </HeaderStyled>
     )
 }
