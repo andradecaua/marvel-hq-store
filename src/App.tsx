@@ -30,7 +30,7 @@ function App() {
   return (
     <div className="App" style={{display: 'grid', rowGap: 10}}>
 
-      <Header />
+      <Header showCartBag={true} />
 
       <div>
         <SelectLimitForPage defaultValue={limitHqForPage} onChange={(event) => setLimitHqForPage(Number.parseInt(event.currentTarget.value))}>
@@ -52,7 +52,7 @@ function App() {
       <div style={{display: 'flex', justifyContent: 'space-around', fontSize: 20, width: "90vw", justifySelf:"center"}}>
         {
         arrayForPagination.current?.map((_, index) => {
-          let background = active == index+1?"rgba(255, 0, 0, 0.7)":""
+          let background = active === index+1?"rgba(255, 0, 0, 0.7)":""
           let color = active === index+1?"white":"black"
           return(
             <SpanPagination style={{color: color,backgroundColor: background}} key={index} onClick={(event) => {

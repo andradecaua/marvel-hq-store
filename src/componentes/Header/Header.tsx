@@ -3,15 +3,18 @@ import styled from "styled-components"
 import shoppingbag from '../../assets/add_item_to_bag_white.png'
 
 
-function Header(){
+function Header(props: {showCartBag: boolean}){
     return(
         <HeaderStyled>
             <TitleStyled>
                 Marvel HQ'Store
             </TitleStyled>
+            {
+            props.showCartBag?
             <nav>
                 <Link to="/cart"><img src={shoppingbag} alt="Bag de compras" height={40} /></Link>
-            </nav>
+            </nav>:""
+            }
         </HeaderStyled>
     )
 }

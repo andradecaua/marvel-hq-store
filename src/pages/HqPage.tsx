@@ -23,7 +23,7 @@ function HqPage(){
 
     return(
         <div style={{display: 'grid', rowGap: 10}}>
-            <Header />
+            <Header showCartBag={true} />
             <main>
                 {hq === undefined?"":<HqPageComponent hq={hq} />}
             </main>

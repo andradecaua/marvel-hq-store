@@ -1,11 +1,15 @@
 import { store } from "../store/store"
+import { useEffect } from "react"
+import Header from "../componentes/Header/Header"
 
 function CartPage(){
-    console.log(store.getState())
+    useEffect(() => {
+        console.log(store.getState())
+    },[])
     return(
-        <>
-            Cart Page
-        </>
+       <main>
+        <Header showCartBag={false} />
+       </main>
     )
 }
 

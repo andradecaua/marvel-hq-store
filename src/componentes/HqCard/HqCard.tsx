@@ -26,7 +26,7 @@ function HqCard(props: typeHq){
         <div style={{display: 'flex', flexDirection: 'row', justifyContent: "space-evenly", alignItems: "center"}}>
             <span style={{fontWeight: 'bold'}}>R${priceHQ}</span>
             <ShoppingBagButton onClick={() => {
-                
+                dispatch(incrementItemToCart(hq))
             }}><img src={addItemToBagIcon} alt="Add item to bag icon" height={35}/></ShoppingBagButton>
         </div>
     </SectionStyled>
