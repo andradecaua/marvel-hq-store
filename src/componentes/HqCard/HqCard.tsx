@@ -1,11 +1,11 @@
 import styled from 'styled-components'
 import addItemToBagIcon from '../../assets/add_item_to_bag.png'
 import { typeHq } from '../../types/typeshq'
-import "./style/hqcard.css"
 import {useNavigate} from 'react-router-dom'
-import { store } from '../../store/store'
 import { incrementItemToCart } from '../../reducer/cartReducer'
 import { useDispatch } from 'react-redux'
+
+import "./style/hqcard.css"
 
 function HqCard(props: typeHq){
     const sourceThumbnail = `${props.thumbnail.path}.${props.thumbnail.extension}`

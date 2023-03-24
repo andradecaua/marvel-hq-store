@@ -1,4 +1,4 @@
-import { createAction, createReducer, PrepareAction } from "@reduxjs/toolkit";
+import { createAction, createReducer} from "@reduxjs/toolkit";
 import { typeHq } from "../types/typeshq";
 
 const cartInitialState: typeHq[] = []
@@ -24,6 +24,7 @@ const cartReducer = createReducer(cartInitialState, (builder) => {
                 {
                     const hq = action.payload as typeHq
                     state.splice(state.indexOf(hq), 1)
+                    return state
                 }
         })
 })
