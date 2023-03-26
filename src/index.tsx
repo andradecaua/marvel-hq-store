@@ -5,7 +5,7 @@ import { BrowserRouter } from 'react-router-dom';
 import reportWebVitals from './reportWebVitals';
 import { Route, Routes } from 'react-router';
 import { HqPage } from './pages/HqPage';
-import CartPage from './pages/CartPage';
+import CartPage from './pages/CartPage/CartPage';
 import { Provider } from 'react-redux';
 import { store } from './store/store';
 

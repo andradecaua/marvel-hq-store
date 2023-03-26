@@ -1,7 +1,9 @@
 import { useEffect, useRef, useState } from "react"
+import { useDispatch } from "react-redux"
 import { useParams } from "react-router-dom"
 import styled from "styled-components"
 import Header from "../componentes/Header/Header"
+import { incrementItemToCart } from "../reducer/cartReducer"
 import { getHQ } from "../services/getHq"
 import { typeHq, typeHqs } from "../types/typeshq"
 
@@ -34,6 +36,7 @@ function HqPage(){
 function HqPageComponent(props: {hq: typeHq}){
 
     const hq = props.hq 
+    const dispatch = useDispatch()
 
     return(
         <section>
@@ -42,7 +45,7 @@ function HqPageComponent(props: {hq: typeHq}){
                 <SpanTitle>{hq.title}</SpanTitle>
                 <SpanPrice>R${hq.prices[0].price}</SpanPrice>
                 <Descripton>{hq.description}</Descripton>
-                <AddToCartButton>Adicionar ao carrinho</AddToCartButton>
+                <AddToCartButton onClick={() => dispatch(incrementItemToCart(hq))}>Adicionar ao carrinho</AddToCartButton>
             </DivDadosHq>
         </section>
     )

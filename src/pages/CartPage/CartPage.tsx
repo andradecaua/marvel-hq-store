@@ -1,15 +1,18 @@
 import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { typeHq } from "../types/typeshq"
-import Header from "../componentes/Header/Header"
+import { typeHq } from "../../types/typeshq"
+import Header from "../../componentes/Header/Header"
 import styled from "styled-components"
-import { decrementItemToCart } from "../reducer/cartReducer"
-
+import { decrementItemToCart, incrrementQuantToItem } from "../../reducer/cartReducer"
+import "./styles/cartpage.css"
+import NullCart from "../../componentes/NullCart/NullCart"
 
 function CartPage(){
 
     const cart = useSelector((state: {cart: typeHq[]}) => state.cart)
     const meiosDePagamento = ["Pix", "Boleto", "Cartão de Crédito"]
+    
+    
 
     useEffect(() => {
       
@@ -18,20 +21,22 @@ function CartPage(){
     return(
        <>
         <Header showCartBag={false} />
-        <main>
-          {cart.length === 0?"O carrinho está vazio":
+        <main style={{display: 'grid', minHeight: "100vh"}}>
+          {cart.length === 0?<NullCart/>:
           <>
+          <StyledTitle>Carrinho de Compras</StyledTitle>
           <CartList cart={cart}/>
+          <StyledTitle>Pagamentos</StyledTitle>
           <FormPedido>
-              <label>
+              <input type="text" />
+              <label id="label_nome">
                 Nome
               </label>
-              <input type="text" style={{width: 100, height: 20}}/>
-              <label>
+              <input type="email"/>
+              <label id="label_email">
                 Email
               </label>
-              <input type="email" style={{}}/>
-              <select>
+              <PaymentMethodsSelect>
                 {meiosDePagamento.map((meio, index) => {
                   return(
                     <option value={meio} key={index}>
@@ -39,10 +44,10 @@ function CartPage(){
                     </option>
                   )
                 })}
-              </select>
-              <button style={{width: 100, height: 20}}>
+              </PaymentMethodsSelect>
+              <SendOrderButton>
                 Enviar Pedido
-              </button>
+              </SendOrderButton>
           </FormPedido>
           </>
           }
@@ -63,7 +68,9 @@ function CartList(props: {cart: typeHq[]}){
               </DecrementButton>
               <ImageHqCart src={`${hq.thumbnail.path}.${hq.thumbnail.extension}`} height={100} alt={hq.title}  />
               <IncrementDecrementAreaitem>
-                <ButtonIncrementOrDecrement>+</ButtonIncrementOrDecrement>
+                <ButtonIncrementOrDecrement onClick={() => {
+                  dispatch(incrrementQuantToItem(hq))
+                  }}>+</ButtonIncrementOrDecrement>
                 <span>{hq.quant}</span>
                 <ButtonIncrementOrDecrement>-</ButtonIncrementOrDecrement>
               </IncrementDecrementAreaitem>
@@ -74,29 +81,84 @@ function CartList(props: {cart: typeHq[]}){
     )
 }
 
+const PaymentMethodsSelect = styled.select`
+  justify-self: center;
+  grid-column: 1/3;
+  height: 25px;
+`
+
+const SendOrderButton = styled.button`
+  background-color: rgb(230, 36, 41);
+  border: 1px solid rgb(230, 36, 31); 
+  color: white;
+  border-radius:2px;
+  height: 40px;
+  width: 150px;
+  grid-row: 4;
+  grid-column: 1/3;
+  justify-self: center;
+  font-size: 1rem
+`
+
+const StyledTitle = styled.h2`
+  justify-self: center      
+`
+
 const FormPedido = styled.form`
   justify-self: center;
   display: grid;
-  grid-template-columns: 100%;
+  grid-template-columns: 50% 50%;
+  grid-template-rows: 12px 25px 30px;
+  width: 200px;
+  justify-self: center;
+  gap: 10px;
 
   label{
     position: relative;
-    top: 10px;
+    top: 17px;
     z-index: 2;
     background-color: white;
     width: max-content;
-    font-size: 0.7rem
+    font-size: 0.7rem;
+    margin-left: 5px;
+    transition: color 0.5s 1ms ease, top 0.2s 1ms ease-in-out ;
   }
+
 
   input{
     width: 100px;
     height: 20px;
     position: relative;
+    outline: none;
   }
 
-  input[type="email"]:focus{
-    border: 1px solid red;
-    outline: "none"
+  input[type="text"]{
+    grid-row: 2;
+    transition: border 0.5s 1ms ease;
+    border: 1px solid gray;
+    border-radius: 5px;
+    :focus + label#label_nome{
+      color: rgb(230, 36, 41);
+      top: 10px;
+    }
+    :focus{
+      border: 1px solid rgb(230, 36, 41);
+    }
+  }
+
+  input[type="email"]{
+    grid-row: 2;
+    transition: border 0.5s 1ms ease;
+    border: 1px solid gray;
+    border-radius: 5px;
+    
+    :focus + label#label_email{
+      color: rgb(230, 36, 41);
+      top: 10px;
+    }
+    :focus{
+      border: 1px solid rgb(230, 36, 41);
+    }
   }
 
   select{

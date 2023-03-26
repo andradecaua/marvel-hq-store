@@ -5,12 +5,17 @@ const cartInitialState: typeHq[] = []
 
 export const incrementItemToCart = createAction('cart/increment', (hq: typeHq) => {return {payload: hq}})
 export const decrementItemToCart = createAction('cart/decrement', (hq: typeHq) => {return {payload: hq}})
-
+export const incrrementQuantToItem = createAction('cart/incrementQuant', (hq: typeHq) => {return {payload: hq}})
 
 const cartReducer = createReducer(cartInitialState, (builder) => {
     builder
+        .addCase(incrrementQuantToItem,
+            (state, action) => {
+                
+            })
         .addCase(incrementItemToCart, 
             (state, action) => {
+                console.log(state)
                 if(action.payload !== undefined)
                 {
                     const hq = action.payload as typeHq
