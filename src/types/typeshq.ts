@@ -17,5 +17,6 @@ export type typeHq = {
         price: number
       }],
     description: string
+    quant?: number;
 }
 

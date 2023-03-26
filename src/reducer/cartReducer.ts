@@ -1,10 +1,10 @@
 import { createAction, createReducer} from "@reduxjs/toolkit";
-import { typeHq } from "../types/typeshq";
+import {typeHq } from "../types/typeshq";
 
 const cartInitialState: typeHq[] = []
 
 export const incrementItemToCart = createAction('cart/increment', (hq: typeHq) => {return {payload: hq}})
-const decrementItemToCart = createAction('cart/decrement')
+export const decrementItemToCart = createAction('cart/decrement', (hq: typeHq) => {return {payload: hq}})
 
 
 const cartReducer = createReducer(cartInitialState, (builder) => {
@@ -14,6 +14,7 @@ const cartReducer = createReducer(cartInitialState, (builder) => {
                 if(action.payload !== undefined)
                 {
                     const hq = action.payload as typeHq
+                    hq.quant = 1;
                     state.push(hq)
                     return state
                 }

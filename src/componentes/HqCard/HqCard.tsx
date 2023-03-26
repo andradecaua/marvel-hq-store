@@ -42,10 +42,6 @@ const ShoppingBagButton = styled.button`
     height: 40px;
     background-color: transparent;
     border: none;
-
-    :hover{
-        transform: scale(1.1)
-    }
 `
 
 const SectionStyled = styled.section`
